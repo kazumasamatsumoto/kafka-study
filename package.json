@@ -18,6 +18,8 @@
     "learn:auto-offset": "ts-node src/learn/auto-offset-reset-demo.ts",
     "learn:offset-reset-test": "ts-node src/learn/offset-reset-test.ts",
     "learn:offset-commit": "ts-node src/learn/offset-commit-demo.ts",
+    "learn:check-offset": "ts-node src/learn/check-offset-demo.ts",
+    "learn:view-offset": "ts-node src/learn/view-offset.ts",
     "test:producer": "ts-node src/test-producer.ts",
     "test:consumer": "ts-node src/test-consumer.ts",
     "test:all": "ts-node src/test-all-topics.ts",
