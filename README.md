@@ -150,12 +150,16 @@ npm run test:verify-all
 
 ```
 kafka-learning/
+├── GETTING_STARTED.md          # 最初に読むドキュメント（環境セットアップ）
+├── LEARNING_GUIDE.md           # 学習ガイド（7つのステップ）
+├── README.md                   # このファイル
 ├── docker-compose.yml          # Kafka環境定義
 ├── package.json                # npmスクリプト・依存関係
 ├── tsconfig.json               # TypeScript設定
-├── docs/                       # ドキュメント
-│   ├── kafka-basics.md         # Kafka基礎知識
-│   └── complete-guide.md       # 完全学習ガイド
+├── docs/                       # リファレンスドキュメント
+│   ├── kafka-basics.md         # Kafka用語集
+│   ├── how-to-check-offset.md  # Offset確認の詳細
+│   └── offset-management.md    # Offset管理の詳細
 ├── src/
 │   ├── learn/                  # 学習用スクリプト（10個）
 │   │   ├── producer-for-group.ts         # Consumer Group用Producer
@@ -356,50 +360,24 @@ npm run test:verify-all
 
 ---
 
-## ドキュメント
+## リファレンスドキュメント
 
-### 📚 学習ドキュメント
+必要に応じて参照してください：
 
-#### 🚀 まず最初に読むべきドキュメント
-
-- **[docs/project-overview.md](docs/project-overview.md)**: **プロジェクト全体ガイド**（最初に読むことを推奨）
-  - プロジェクト全体の構成とファイル一覧
-  - 各ファイルの役割と使い方
-  - 初心者向け8ステップ学習シナリオ
-  - ファイル間の関係図
-  - よくある質問
-
-- **[docs/kafka-basics.md](docs/kafka-basics.md)**: Kafkaの基礎知識
-  - 用語解説（Broker, Topic, Partition, Offset, Consumer Group）
+- **[docs/kafka-basics.md](docs/kafka-basics.md)** - Kafka用語集
+  - Broker, Topic, Partition, Offset, Consumer Groupの詳細説明
   - HTTPとの違い
-  - Consumer Groupの仕組み
   - 実践的なユースケース
 
-#### 📖 詳細ガイド
+- **[docs/how-to-check-offset.md](docs/how-to-check-offset.md)** - Offset確認の詳細
+  - Kafka UIでの確認手順（画面キャプチャ付き）
+  - CLIコマンドの全オプション解説
+  - 各列（Current Offset、End Offset、Lag）の詳細説明
 
-- **[docs/learning-scripts-guide.md](docs/learning-scripts-guide.md)**: 各学習スクリプトの詳細解説
-  - 全7種類の学習スクリプトの使い方
-  - 各スクリプトで何を学ぶか
-  - コマンド実行例と出力例
-  - Kafka UIでの確認方法
-  - 重要なコード解説
-
-- **[docs/complete-guide.md](docs/complete-guide.md)**: 完全学習ガイド
-  - 基礎から応用まで
-  - Offsetリセットの全パターン
-  - Q&A集
-  - トラブルシューティング
-
-- **[docs/offset-management.md](docs/offset-management.md)**: Offset管理の詳細
-  - Offsetコミットの仕組み
-  - 自動コミット vs 手動コミット
+- **[docs/offset-management.md](docs/offset-management.md)** - Offset管理の詳細
+  - 自動コミット vs 手動コミットの仕組み
   - ベストプラクティス
-
-- **[docs/how-to-check-offset.md](docs/how-to-check-offset.md)**: Offset確認方法
-  - Kafka UIでの確認手順（ステップバイステップ）
-  - CLIコマンドでの確認方法
-  - スクリプトでの確認方法
-  - Current Offset、End Offset、Lagの意味
+  - 本番環境での推奨設定
 
 ---
 
