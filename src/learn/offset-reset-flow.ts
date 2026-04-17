@@ -80,7 +80,13 @@ async function pattern2_deleteGroup() {
       await admin.deleteGroups([groupId]);
       console.log(`✓ Consumer Group "${groupId}" を削除しました`);
     } catch (error: any) {
-      if (error.message.includes('does not exist')) {
+      // エラーコード69: COORDINATOR_NOT_AVAILABLE（Groupが存在しない）
+      // エラーコード15: GROUP_ID_NOT_FOUND（Groupが見つからない）
+      if (error.groups && error.groups[0]?.errorCode === 69) {
+        console.log(`Consumer Group "${groupId}" は存在しません（問題なし）`);
+      } else if (error.groups && error.groups[0]?.errorCode === 15) {
+        console.log(`Consumer Group "${groupId}" は存在しません（問題なし）`);
+      } else if (error.message && (error.message.includes('does not exist') || error.message.includes('not found'))) {
         console.log(`Consumer Group "${groupId}" は存在しません（問題なし）`);
       } else {
         throw error;
