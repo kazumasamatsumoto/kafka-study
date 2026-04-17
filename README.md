@@ -75,13 +75,22 @@ Kafka UIでトピックを確認：
 http://localhost:8080
 ```
 
-自動作成されるトピック（ビジネスロジック想定）：
+**自動作成されるトピック（全11個）:**
+
+テスト用トピック（6個）:
 - `orders-topic` - 注文情報
 - `payments-topic` - 決済情報
 - `notifications-topic` - 通知
 - `events-topic` - イベント
 - `logs-topic` - ログ
 - `health-check-topic` - ヘルスチェック
+
+学習用トピック（5個）:
+- `learn-topic` - Consumer Group、Offset学習用（1 partition）
+- `partition-topic` - Partition学習用（3 partitions）
+- `realtime-topic` - リアルタイム受信学習用（1 partition）
+- `test-topic` - Offsetリセットテスト用（1 partition）
+- `demo-topic` - Offsetコミット学習用（1 partition）
 
 ### 2. メッセージ送信テスト
 

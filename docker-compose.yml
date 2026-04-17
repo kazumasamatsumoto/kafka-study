@@ -108,6 +108,14 @@ services:
       kafka-topics --create --if-not-exists --bootstrap-server kafka:9092 --topic logs-topic --partitions 1 --replication-factor 1;
       kafka-topics --create --if-not-exists --bootstrap-server kafka:9092 --topic health-check-topic --partitions 1 --replication-factor 1;
       echo '===================================';
+      echo 'Creating learning topics...';
+      echo '===================================';
+      kafka-topics --create --if-not-exists --bootstrap-server kafka:9092 --topic learn-topic --partitions 1 --replication-factor 1;
+      kafka-topics --create --if-not-exists --bootstrap-server kafka:9092 --topic partition-topic --partitions 3 --replication-factor 1;
+      kafka-topics --create --if-not-exists --bootstrap-server kafka:9092 --topic realtime-topic --partitions 1 --replication-factor 1;
+      kafka-topics --create --if-not-exists --bootstrap-server kafka:9092 --topic test-topic --partitions 1 --replication-factor 1;
+      kafka-topics --create --if-not-exists --bootstrap-server kafka:9092 --topic demo-topic --partitions 1 --replication-factor 1;
+      echo '===================================';
       echo 'Topics created successfully!';
       echo '===================================';
       kafka-topics --list --bootstrap-server kafka:9092;
