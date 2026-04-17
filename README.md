@@ -322,17 +322,46 @@ npm run test:verify-all
 
 ### 📚 学習ドキュメント
 
+#### 🚀 まず最初に読むべきドキュメント
+
+- **[docs/project-overview.md](docs/project-overview.md)**: **プロジェクト全体ガイド**（最初に読むことを推奨）
+  - プロジェクト全体の構成とファイル一覧
+  - 各ファイルの役割と使い方
+  - 初心者向け8ステップ学習シナリオ
+  - ファイル間の関係図
+  - よくある質問
+
 - **[docs/kafka-basics.md](docs/kafka-basics.md)**: Kafkaの基礎知識
   - 用語解説（Broker, Topic, Partition, Offset, Consumer Group）
   - HTTPとの違い
   - Consumer Groupの仕組み
   - 実践的なユースケース
 
+#### 📖 詳細ガイド
+
+- **[docs/learning-scripts-guide.md](docs/learning-scripts-guide.md)**: 各学習スクリプトの詳細解説
+  - 全7種類の学習スクリプトの使い方
+  - 各スクリプトで何を学ぶか
+  - コマンド実行例と出力例
+  - Kafka UIでの確認方法
+  - 重要なコード解説
+
 - **[docs/complete-guide.md](docs/complete-guide.md)**: 完全学習ガイド
   - 基礎から応用まで
   - Offsetリセットの全パターン
   - Q&A集
   - トラブルシューティング
+
+- **[docs/offset-management.md](docs/offset-management.md)**: Offset管理の詳細
+  - Offsetコミットの仕組み
+  - 自動コミット vs 手動コミット
+  - ベストプラクティス
+
+- **[docs/how-to-check-offset.md](docs/how-to-check-offset.md)**: Offset確認方法
+  - Kafka UIでの確認手順（ステップバイステップ）
+  - CLIコマンドでの確認方法
+  - スクリプトでの確認方法
+  - Current Offset、End Offset、Lagの意味
 
 ---
 
