@@ -1,0 +1,42 @@
+{
+  "name": "kafka-learning",
+  "version": "1.0.0",
+  "description": "Kafka learning project with NestJS",
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "learn:consumer-group": "ts-node src/learn/consumer-group.ts",
+    "learn:producer-group": "ts-node src/learn/producer-for-group.ts",
+    "learn:partition-producer": "ts-node src/learn/partition-producer.ts",
+    "learn:partition-consumer": "ts-node src/learn/partition-consumer.ts",
+    "learn:offset": "ts-node src/learn/offset-consumer.ts",
+    "learn:realtime-producer": "ts-node src/learn/realtime-producer.ts",
+    "learn:realtime-consumer": "ts-node src/learn/realtime-consumer.ts",
+    "learn:offset-reset-flow": "ts-node src/learn/offset-reset-flow.ts",
+    "learn:auto-offset": "ts-node src/learn/auto-offset-reset-demo.ts",
+    "learn:offset-reset-test": "ts-node src/learn/offset-reset-test.ts",
+    "learn:offset-commit": "ts-node src/learn/offset-commit-demo.ts",
+    "test:producer": "ts-node src/test-producer.ts",
+    "test:consumer": "ts-node src/test-consumer.ts",
+    "test:all": "ts-node src/test-all-topics.ts",
+    "test:verify-all": "ts-node src/test-verify-all.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/microservices": "^10.0.0",
+    "@nestjs/platform-express": "^10.0.0",
+    "kafkajs": "^2.2.4",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/schematics": "^10.0.0",
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
+  }
+}
