@@ -299,4 +299,14 @@ docker-compose logs kafka-init-topics
 ✅ 3つの基本概念（Producer、Kafka、Consumer）を理解
 ✅ メッセージの送受信を確認
 
-次は`LEARNING_GUIDE.md`で実践的な学習を始めましょう！
+### 次のステップ
+
+**実践的な学習**: `LEARNING_GUIDE.md`
+- 7つのステップでKafkaの使い方を習得
+- フローチャートとデータフロー図付き
+- 各ステップに理解度チェックあり
+
+**内部の仕組みを知る**: `KAFKA_INTERNALS.md`（オプション）
+- Kafkaが生まれた背景
+- なぜKafkaは高速なのか？
+- ログベース設計とレプリケーション
