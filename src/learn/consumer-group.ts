@@ -1,15 +1,43 @@
 import { Kafka } from 'kafkajs';
 
 /**
- * Consumer Group学習スクリプト
+ * 【ステップ1】Consumer Group学習 - Consumer
  *
- * 実行方法:
- * 1. ターミナル1: npm run learn:consumer-group -- consumer1
- * 2. ターミナル2: npm run learn:consumer-group -- consumer2
+ * 📋 前提条件:
+ *   - npm run learn:producer-group を実行済み（メッセージ送信済み）
+ *   - または、learn-topicにメッセージが存在すること
  *
- * 説明:
- * - 同じgroupId → メッセージを分け合う（負荷分散）
- * - 違うgroupId → それぞれ全メッセージを受け取る
+ * 🎯 このスクリプトで学ぶこと:
+ *   - Consumer Groupによる負荷分散の仕組み
+ *   - 同じgroupIdのConsumerは、メッセージを分け合う
+ *   - 異なるgroupIdのConsumerは、独立してメッセージを受信
+ *
+ * 🚀 実行方法:
+ *   【単一Consumer】
+ *   npm run learn:consumer-group
+ *
+ *   【複数Consumer（負荷分散確認）】
+ *   ターミナル1: npm run learn:consumer-group
+ *   ターミナル2: npm run learn:consumer-group
+ *   → 同じgroupIdなので、メッセージを分け合う
+ *
+ * ✅ 期待される結果:
+ *   【単一Consumer】
+ *   - learn-topicの全メッセージを受信
+ *   - 「[受信 1] Offset 0: メッセージ 0」〜「[受信 10] Offset 9: メッセージ 9」
+ *
+ *   【複数Consumer】
+ *   - ターミナル1: 約5件受信
+ *   - ターミナル2: 約5件受信
+ *   - 合計10件を分け合う
+ *
+ * 📊 データフロー:
+ *   learn-topic → Consumer (groupId: consumer-learn-group)
+ *   同じgroupId → 負荷分散
+ *   異なるgroupId → 独立受信
+ *
+ * 🔗 確認方法:
+ *   Kafka UI: http://localhost:8080 → Consumers → consumer-learn-group
  */
 
 const kafka = new Kafka({

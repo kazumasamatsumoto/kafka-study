@@ -335,6 +335,10 @@ await admin.disconnect();
 
 **いつ使う:** トラブル時の完全リセット
 
+**注意:**
+- Consumer Groupが存在しない場合、エラーコード69（COORDINATOR_NOT_AVAILABLE）が発生しますが、学習スクリプトは自動的に処理します
+- Consumerがアクティブな場合は削除できません。全てのConsumerを停止してから実行してください
+
 ---
 
 #### 方法3: Admin APIで特定Offset指定

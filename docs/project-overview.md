@@ -963,11 +963,25 @@ npm run learn:offset-reset-flow -- 1
 ```bash
 npm run learn:offset-reset-flow -- 2
 ```
-**確認**: Consumer Group `pattern2-group`が削除される
 
-```bash
-# 次回起動時は必ず最初から読む
+**何が起こるか:**
+- Consumer Group `pattern2-group`を削除
+- Consumer Groupが存在しない場合、「存在しません（問題なし）」と表示
+- 次回起動時は必ず最初から読む
+
+**出力例:**
 ```
+========================================
+パターン2: Consumer Group削除
+========================================
+
+Consumer Group "pattern2-group" は存在しません（問題なし）
+
+次にこのgroupIdでConsumerを起動すると、最初から読みます。
+これが最も確実にリセットする方法です。
+```
+
+**注意**: エラーコード69（COORDINATOR_NOT_AVAILABLE）はConsumer Groupが存在しない場合の正常な動作です。
 
 #### 4. パターン3: Admin APIでOffset指定
 
@@ -1265,6 +1279,7 @@ npm run learn:view-offset auto-commit-group demo-topic
 - **接続エラー**: `localhost:19092`を使用しているか確認
 - **トピックが見つからない**: `docker-compose up -d`で自動作成されているか確認
 - **Consumerがメッセージを受信しない**: Offsetが最新になっていないか確認
+- **Consumer Group削除エラー（エラーコード69）**: Consumer Groupが存在しない場合の正常な動作。学習スクリプトは自動的に処理します
 
 ---
 

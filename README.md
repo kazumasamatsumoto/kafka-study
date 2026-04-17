@@ -2,16 +2,54 @@
 
 Apache Kafkaの基礎から実践まで学べる学習用プロジェクトです。
 
+## 🚀 クイックスタート
+
+### まずはこのドキュメントを読んでください
+
+**初めての方**: [`GETTING_STARTED.md`](GETTING_STARTED.md)（30分）
+  - 環境セットアップ
+  - Kafkaの3つの基本概念（Producer、Kafka、Consumer）
+  - 動作確認
+
+**学習を始める**: [`LEARNING_GUIDE.md`](LEARNING_GUIDE.md)（2-3日）
+  - 7つのステップで体系的に学習
+  - 各ステップにフローチャートとデータフロー付き
+  - 実行コマンド → 期待される出力 → 確認方法
+
+---
+
 ## 📋 目次
 
 - [概要](#概要)
-- [セットアップ](#セットアップ)
-- [クイックスタート](#クイックスタート)
+- [ドキュメント構成](#ドキュメント構成)
 - [ディレクトリ構成](#ディレクトリ構成)
-- [学習スクリプト](#学習スクリプト)
-- [テストスクリプト](#テストスクリプト)
-- [ドキュメント](#ドキュメント)
+- [学習スクリプト一覧](#学習スクリプト一覧)
 - [トラブルシューティング](#トラブルシューティング)
+
+---
+
+## ドキュメント構成
+
+このプロジェクトのドキュメントは、学習の流れに沿って3つに整理されています：
+
+### 1. はじめに（30分）
+- **[GETTING_STARTED.md](GETTING_STARTED.md)** - 環境セットアップと基本概念
+  - Docker環境の起動
+  - Kafkaの3つの基本概念（図解付き）
+  - 動作確認（メッセージ送受信テスト）
+
+### 2. 学習ガイド（2-3日）
+- **[LEARNING_GUIDE.md](LEARNING_GUIDE.md)** - 7つのステップで体系的に学習
+  - 各ステップにフローチャートとデータフロー図付き
+  - 前提条件 → 実行方法 → 期待される結果 → 確認方法
+  - 理解度チェック
+
+### 3. リファレンス（必要に応じて参照）
+- **[docs/](docs/)** - 詳細ドキュメント
+  - `kafka-basics.md`: Kafka基礎知識
+  - `how-to-check-offset.md`: Offset確認方法の詳細
+  - `offset-management.md`: Offset管理の詳細
+  - その他のリファレンスドキュメント
 
 ---
 
@@ -426,6 +464,28 @@ docker exec kafka-broker kafka-topics \
   --topic test-topic \
   --partitions 1 \
   --replication-factor 1
+```
+
+### Consumer Group削除時のエラー（エラーコード69）
+
+**エラー**: `KafkaJSDeleteGroupsError: errorCode: 69`
+
+**原因**: Consumer Groupが存在しない、またはConsumerがアクティブ
+
+**解決策1（存在しない場合）:**
+- 学習スクリプトは自動的に処理します
+- 「Consumer Group "xxx" は存在しません（問題なし）」と表示されます
+
+**解決策2（Consumerがアクティブな場合）:**
+```bash
+# 1. 全てのConsumerを停止（Ctrl+C）
+# 2. 数秒待ってから再度削除を実行
+
+# または、CLIで確認
+docker exec kafka-broker-modern kafka-consumer-groups \
+  --bootstrap-server localhost:9092 \
+  --group グループ名 \
+  --describe
 ```
 
 ---

@@ -1,7 +1,48 @@
 import { Kafka } from 'kafkajs';
 
 /**
- * Consumer GroupのOffset情報を表示
+ * 【ステップ7】Offset確認学習 - Offset詳細表示ツール
+ *
+ * 📋 前提条件:
+ *   - 確認したいConsumer Groupが存在すること
+ *   - 対象トピックにメッセージが存在すること
+ *
+ * 🎯 このスクリプトで学ぶこと:
+ *   - Consumer GroupのOffset状態を確認する方法
+ *   - Current Offset、End Offset、Lagの意味
+ *   - 読み終えたメッセージ数、未読メッセージ数、進捗率の計算
+ *
+ * 🚀 実行方法:
+ *   【デフォルト（offset-check-group / learn-topic）】
+ *   npm run learn:view-offset
+ *
+ *   【Consumer GroupとTopicを指定】
+ *   npm run learn:view-offset <groupId> <topic>
+ *   例: npm run learn:view-offset demo-group demo-topic
+ *
+ * ✅ 期待される結果:
+ *   【現在のOffset】
+ *   - Current Offset: 次に読むOffset
+ *   - 「次回は Offset N から読み始める」
+ *
+ *   【トピックのOffset情報】
+ *   - Low (最古): 最も古いOffset
+ *   - High (最新): 次の書き込みOffset
+ *   - 合計メッセージ数
+ *
+ *   【進捗状況】
+ *   - 読み終えたメッセージ数
+ *   - 未読メッセージ数
+ *   - 進捗率（%）
+ *
+ * 📊 データフロー:
+ *   Admin API → Kafka
+ *   - fetchOffsets: Consumer GroupのOffset取得
+ *   - fetchTopicOffsets: トピックのOffset情報取得
+ *   → 進捗率を計算して表示
+ *
+ * 🔗 関連スクリプト:
+ *   npm run learn:check-offset (5件読んでOffset確認のデモ)
  */
 
 const kafka = new Kafka({

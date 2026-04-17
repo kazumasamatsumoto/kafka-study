@@ -550,7 +550,7 @@ npm run learn:offset-reset-flow -- 2
 - Consumer Group `pattern2-group`を削除
 - 次回起動時は必ず最初から読む
 
-**出力例:**
+**出力例（Consumer Groupが存在する場合）:**
 ```
 ========================================
 パターン2: Consumer Group削除
@@ -561,6 +561,20 @@ npm run learn:offset-reset-flow -- 2
 次にこのgroupIdでConsumerを起動すると、最初から読みます。
 これが最も確実にリセットする方法です。
 ```
+
+**出力例（Consumer Groupが存在しない場合）:**
+```
+========================================
+パターン2: Consumer Group削除
+========================================
+
+Consumer Group "pattern2-group" は存在しません（問題なし）
+
+次にこのgroupIdでConsumerを起動すると、最初から読みます。
+これが最も確実にリセットする方法です。
+```
+
+**重要**: Consumer Groupが存在しない場合、エラーコード69（COORDINATOR_NOT_AVAILABLE）が発生しますが、スクリプトは正常に処理します。
 
 **使い分け:**
 - ✅ 本番環境でデータを再処理したい場合
@@ -574,6 +588,8 @@ docker exec kafka-broker-modern kafka-consumer-groups \
   --group pattern2-group \
   --delete
 ```
+
+**注意**: CLIで削除する場合、Consumer Groupが存在しないとエラーになります。
 
 #### パターン3: Admin APIで特定Offsetにリセット
 
